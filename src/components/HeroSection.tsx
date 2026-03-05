@@ -76,7 +76,7 @@ export default function HeroSection() {
                         {/* Foreground Content */}
                         <div className="relative z-10 h-full max-w-[1480px] mx-auto px-6 w-full flex flex-col justify-center">
                             <div className="max-w-3xl text-left text-white mt-12 relative">
-                                <div className="text-brand-orange text-4xl font-normal tracking-wide mb-2">
+                                <div className="text-brand-orange text-xl md:text-2xl font-bold tracking-[0.2em] mb-2 uppercase">
                                     {slide.tagline}
                                 </div>
                                 <h1 className="text-6xl md:text-[81px] font-extrabold uppercase tracking-normal leading-none mb-4 text-white">
