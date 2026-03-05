@@ -36,14 +36,14 @@ export default function CustomerReviews() {
 
             {/* Foreground Content */}
             <div className="relative z-10 w-full">
-                <div className="max-w-7xl mx-auto px-6 mb-12">
+                <div className="max-w-[1480px] mx-auto px-6 mb-12">
                     <h2 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tight drop-shadow-lg">
                         What Our Customers Are Saying
                     </h2>
                 </div>
 
                 {/* CSS-only snap scrolling container to act as a slider */}
-                <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 px-6 pb-12 w-full max-w-7xl mx-auto scrollbar-hide">
+                <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 px-6 pb-12 w-full max-w-[1480px] mx-auto scrollbar-hide">
                     {reviews.map((review, index) => (
                         <div key={index} className="flex-shrink-0 w-[400px] bg-white p-8 snap-center shadow-2xl relative">
                             <div className="flex justify-between items-start mb-6">

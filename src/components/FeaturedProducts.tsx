@@ -31,7 +31,7 @@ const products = [
 export default function FeaturedProducts() {
     return (
         <section className="w-full py-20 px-6 font-sans bg-white">
-            <div className="max-w-7xl mx-auto">
+            <div className="max-w-[1480px] mx-auto">
 
                 <div className="mb-12">
                     <h2 className="text-3xl md:text-4xl font-black text-brand-black uppercase tracking-tight inline-block">

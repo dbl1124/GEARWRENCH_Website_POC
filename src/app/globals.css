@@ -7,7 +7,7 @@
   --color-brand-dark-gray: #111111;
   --color-brand-gray: #F3F3F3;
   --color-brand-offwhite: #E9EBEC;
-  --font-sans: var(--font-akrobat), "Arial", "Helvetica", sans-serif;
+  --font-sans: var(--font-akrobat);
 }
 
 body {

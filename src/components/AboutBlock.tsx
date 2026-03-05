@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function AboutBlock() {
     return (
         <section className="w-full bg-brand-dark-gray text-white font-sans py-20 px-6">
-            <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+            <div className="max-w-[1480px] mx-auto flex flex-col md:flex-row items-center gap-12">
 
                 {/* Left Text Content */}
                 <div className="flex-1 space-y-6">

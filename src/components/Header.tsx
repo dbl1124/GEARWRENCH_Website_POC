@@ -5,10 +5,16 @@ export default function Header() {
     return (
         <header className="w-full flex flex-col font-sans z-50">
             {/* Top Black Bar */}
-            <div className="bg-brand-black w-full py-3 flex justify-center items-center">
-                <Link href="/" className="flex items-center space-x-1">
-                    <div className="bg-brand-orange text-brand-black font-black text-xl italic px-1 rounded-sm tracking-tighter mr-1">GW</div>
-                    <span className="text-white font-black text-3xl tracking-wide">GEARWRENCH</span>
+            <div className="bg-brand-black w-full h-[90px] flex justify-center items-center">
+                <Link href="/" className="flex items-center">
+                    <Image
+                        src="/images/gw-logo.svg"
+                        alt="GearWrench"
+                        width={370}
+                        height={48}
+                        className="object-contain"
+                        priority
+                    />
                 </Link>
             </div>
 

@@ -1,87 +1,158 @@
+'use client';
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const carouselItems = [
     {
-        title: "7\" Wireless Bi-Directional Diagnostic Tablet",
-        sku: "GWSMART07",
-        image: "/images/handheld-diagnostics.jpg",
-        link: "/products/gwsmart07",
-        rating: 4.6,
-        reviews: 21,
-        description: "DIAGNOSTICS THAT BREAK ALL THE RULES! Stop nothing short of revolutionizing the way you work."
+        title: "MEGAMOD 1858 Tool Storage Set",
+        image: "/images/megamod.png",
+        link: "/products/megamod"
     },
     {
-        title: "MEGAMOD 1268 Pc. Master Mechanics Tool Set",
-        sku: "830ZZ",
-        image: "/images/megamod.png",
-        link: "/products/830zz",
-        rating: 5.0,
-        reviews: 8,
-        description: "The ultimate tool set for the master mechanic. Includes everything you need."
+        title: "5\" Handheld Bi-Directional Diagnostic Tool",
+        image: "/images/handheld-diagnostics.jpg",
+        link: "/products/diagnostics"
+    },
+    {
+        title: "Hi-Viz Modular Tool Set SAE Wrenches",
+        image: "/images/wrench-tray.jpg",
+        link: "/products/hiviz"
     },
     {
         title: "114 Pc SAE/Metric Ratcheting Tap & Die Set",
-        sku: "82812",
-        image: "/images/wrench-tray.jpg",
-        link: "/products/82812",
-        rating: 4.8,
-        reviews: 145,
-        description: "Comprehensive tap and die set with ratcheting T-handles and adapters."
+        image: "/images/feat-1.jpg",
+        link: "/products/82812"
+    },
+    {
+        title: "20 Pc Phillips/Slotted/Torx Driver Set",
+        image: "/images/feat-4.jpg",
+        link: "/products/80066H"
+    },
+    {
+        title: "4 Pc 90-Tooth Flex Head Teardrop Ratchet Set",
+        image: "/images/feat-5.jpg",
+        link: "/products/81230T"
     }
 ];
 
 export default function NewLaunchesCarousel() {
+    const [currentPage, setCurrentPage] = useState(0);
+    const itemsPerPage = 3;
+    const totalPages = Math.ceil(carouselItems.length / itemsPerPage);
+
+    const nextPage = () => {
+        if (currentPage < totalPages - 1) setCurrentPage(currentPage + 1);
+    };
+
+    const prevPage = () => {
+        if (currentPage > 0) setCurrentPage(currentPage - 1);
+    };
+
     return (
-        <section className="w-full py-20 px-6 font-sans bg-brand-offwhite border-t-8 border-brand-orange">
-            <div className="max-w-7xl mx-auto">
-                <div className="flex justify-between items-end mb-12 border-b-2 border-gray-300 pb-4">
-                    <h2 className="text-4xl md:text-5xl font-black text-brand-black uppercase italic tracking-tighter">
+        <section className="w-full py-20 px-6 font-sans bg-white">
+            <div className="max-w-[1480px] mx-auto relative pt-10">
+
+                {/* Headers */}
+                <div className="text-center mb-16">
+                    <p className="text-sm font-bold tracking-widest mb-3 font-sans text-brand-black uppercase">
+                        New Launches
+                    </p>
+                    <h2 className="text-4xl md:text-5xl font-black text-brand-black uppercase tracking-tighter">
                         Fresh Gear For The Shop
                     </h2>
-                    <div className="hidden md:flex space-x-2">
-                        <button className="w-10 h-10 border-2 border-brand-black flex items-center justify-center hover:bg-brand-orange hover:border-brand-orange transition-colors">
-                            <span className="font-bold font-sans">&lt;</span>
-                        </button>
-                        <button className="w-10 h-10 bg-brand-black border-2 border-brand-black text-brand-orange flex items-center justify-center hover:bg-brand-orange hover:text-brand-black transition-colors">
-                            <span className="font-bold font-sans">&gt;</span>
-                        </button>
+                </div>
+
+                {/* Slider Container relative boundary */}
+                <div className="relative px-0 md:px-24">
+
+                    {/* Navigation Arrows */}
+                    <button
+                        onClick={prevPage}
+                        disabled={currentPage === 0}
+                        className={`hidden md:flex absolute left-4 top-[50%] -translate-y-[50%] w-14 h-14 rounded-full border-2 shadow-sm bg-white items-center justify-center transition-all z-20 ${currentPage === 0
+                            ? 'border-gray-100 opacity-30 cursor-not-allowed'
+                            : 'border-gray-200 hover:border-brand-orange hover:text-brand-orange cursor-pointer'
+                            }`}
+                    >
+                        <svg className="w-6 h-6 currentColor" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                        </svg>
+                    </button>
+
+                    <button
+                        onClick={nextPage}
+                        disabled={currentPage === totalPages - 1}
+                        className={`hidden md:flex absolute right-4 top-[50%] -translate-y-[50%] w-14 h-14 rounded-full border-2 shadow-sm bg-white items-center justify-center transition-all z-20 ${currentPage === totalPages - 1
+                            ? 'border-gray-100 opacity-30 cursor-not-allowed'
+                            : 'border-gray-200 hover:border-brand-orange hover:text-brand-orange cursor-pointer'
+                            }`}
+                    >
+                        <svg className="w-6 h-6 currentColor" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </button>
+
+                    {/* Carousel Mask */}
+                    <div className="overflow-hidden w-full pb-6">
+                        {/* Shifting Row */}
+                        <div
+                            className="flex transition-transform duration-700 ease-in-out"
+                            style={{ transform: `translateX(-${currentPage * 100}%)` }}
+                        >
+                            {carouselItems.map((item, index) => (
+                                // Each item is explicitly 1/3 of the container width on desktop, full width on mobile
+                                <div key={index} className="flex-shrink-0 w-full md:w-1/3 flex flex-col group bg-white relative px-4">
+
+                                    {/* Product Image */}
+                                    <div className="w-full h-[320px] relative bg-white flex items-center justify-center overflow-hidden mb-8">
+                                        <Image
+                                            src={item.image}
+                                            alt={item.title}
+                                            fill
+                                            className="object-contain scale-110 group-hover:scale-[1.15] transition-transform duration-500 p-4"
+                                            sizes="(max-width: 768px) 100vw, 33vw"
+                                        />
+                                    </div>
+
+                                    {/* Product Info */}
+                                    <div className="flex flex-col flex-1 items-center px-4">
+                                        <h3 className="text-brand-black font-bold text-[22px] leading-tight text-center mb-10 min-h-[60px] group-hover:text-brand-orange transition-colors md:px-4">
+                                            {item.title}
+                                        </h3>
+
+                                        {/* Standardized Interactive CTA Button */}
+                                        <Link
+                                            href={item.link}
+                                            className="relative inline-flex items-center justify-center px-10 py-4 overflow-hidden text-[15px] transition-all bg-brand-orange group/btn shadow-sm w-[220px] mt-auto"
+                                        >
+                                            {/* Diagonal sliding background (sweeps from bottom-left to top-right, leaves orange sliver) */}
+                                            <span className="absolute inset-y-0 -left-[200%] block w-[200%] bg-brand-black transition-all duration-500 ease-out skew-x-[30deg] origin-bottom group-hover/btn:left-2"></span>
+                                            {/* Text overlay */}
+                                            <span className="relative z-10 w-full text-center font-bold text-brand-black transition-colors duration-300 ease-in-out group-hover/btn:text-white uppercase tracking-widest">
+                                                Buy Now
+                                            </span>
+                                        </Link>
+                                    </div>
+
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
 
-                <div className="flex overflow-x-auto snap-x snap-mandatory gap-8 pb-8 scrollbar-hide -mx-6 px-6 md:mx-0 md:px-0">
-                    {carouselItems.map((item, index) => (
-                        <div key={index} className="flex-shrink-0 w-[350px] md:w-[400px] snap-center flex flex-col group bg-white shadow-lg relative min-h-[500px]">
-                            {/* Product Image */}
-                            <div className="w-full h-[250px] relative bg-white p-6 border-b border-gray-100 flex items-center justify-center overflow-hidden">
-                                <Image
-                                    src={item.image}
-                                    alt={item.title}
-                                    fill
-                                    className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
-                                />
-                            </div>
-
-                            {/* Product Info */}
-                            <div className="p-8 flex flex-col flex-1">
-                                <div className="flex justify-between items-start mb-2">
-                                    <span className="text-gray-500 font-bold text-sm tracking-widest">{item.sku}</span>
-                                    <div className="flex items-center space-x-1">
-                                        <span className="text-brand-orange font-bold text-sm mr-1">{item.rating}</span>
-                                        <svg className="w-3 h-3 text-brand-orange fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" /></svg>
-                                    </div>
-                                </div>
-                                <h3 className="text-brand-black font-bold text-xl leading-tight mb-4 group-hover:text-brand-orange transition-colors">
-                                    {item.title}
-                                </h3>
-                                <p className="text-gray-600 text-sm font-medium leading-relaxed mb-8 flex-1">
-                                    {item.description}
-                                </p>
-                                <Link href={item.link} className="inline-block border-2 border-brand-black text-brand-black uppercase font-bold tracking-widest text-xs px-6 py-3 hover:bg-brand-black hover:text-white transition-colors text-center mt-auto">
-                                    View Product
-                                </Link>
-                            </div>
-                        </div>
+                {/* Pagination Dots */}
+                <div className="flex justify-center space-x-3 mt-12">
+                    {[...Array(totalPages)].map((_, index) => (
+                        <button
+                            key={index}
+                            onClick={() => setCurrentPage(index)}
+                            className={`w-3.5 h-3.5 rounded-full focus:outline-none transition-colors border-2 ${index === currentPage
+                                ? 'bg-gray-300 border-gray-300'
+                                : 'bg-transparent border-gray-200 hover:border-gray-400'
+                                }`}
+                            aria-label={`Go to page ${index + 1}`}
+                        />
                     ))}
                 </div>
 

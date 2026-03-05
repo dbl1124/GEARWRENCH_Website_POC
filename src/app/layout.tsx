@@ -29,8 +29,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${akrobat.variable} font-sans antialiased text-brand-black`}>
+    <html lang="en" className={akrobat.variable}>
+      <body className="font-sans antialiased text-brand-black">
         <Header />
         <main className="min-h-screen">
           {children}
