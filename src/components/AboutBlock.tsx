@@ -7,7 +7,7 @@ export default function AboutBlock() {
             <div className="max-w-[1480px] mx-auto flex flex-col md:flex-row items-center gap-12">
 
                 {/* Left Text Content */}
-                <div className="w-full max-w-3xl space-y-8 flex-1 md:pl-16">
+                <div className="w-full max-w-3xl space-y-8 flex-1">
                     <div>
                         <div className="text-brand-orange text-xl md:text-2xl font-bold tracking-[0.2em] mb-2 uppercase">
                             Value

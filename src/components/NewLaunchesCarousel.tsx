@@ -106,12 +106,13 @@ export default function NewLaunchesCarousel() {
                                     <div className="flex flex-col group bg-white relative pt-6 hover:shadow-[0_10px_30px_rgba(0,0,0,0.12)] hover:-translate-y-2 hover:z-20 transition-all duration-300 rounded-xl h-full">
 
                                         {/* Product Image */}
-                                        <div className="w-full h-[320px] relative bg-white flex items-center justify-center overflow-hidden mb-8 rounded-t-xl p-4">
+                                        <div className="w-full h-[320px] relative bg-white flex items-center justify-center overflow-hidden mb-8 rounded-t-xl p-6 mix-blend-multiply">
                                             <Image
                                                 src={item.image}
                                                 alt={item.title}
                                                 fill
-                                                className="object-contain scale-110 group-hover:scale-[1.12] transition-transform duration-500 p-4"
+                                                unoptimized={true}
+                                                className="object-contain scale-95 group-hover:scale-105 transition-transform duration-500"
                                                 sizes="(max-width: 768px) 100vw, 33vw"
                                             />
                                         </div>

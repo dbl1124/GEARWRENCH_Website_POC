@@ -22,10 +22,10 @@ export default function IndustryGrid() {
                 </h2>
             </div>
 
-            <div className="relative w-full max-w-[1920px] mx-auto group/carousel">
+            <div className="relative w-full max-w-[1480px] mx-auto px-6 group/carousel">
                 {/* Native Horizontal Scroll Container with Custom Scrollbar */}
                 <div
-                    className="flex gap-4 xl:gap-6 overflow-x-auto snap-x snap-mandatory industry-scrollbar pb-8 pt-4 px-6 xl:px-[calc((100vw-1480px)/2+1.5rem)] 2xl:px-[calc((1920px-1480px)/2+1.5rem)]"
+                    className="flex gap-4 xl:gap-6 overflow-x-auto snap-x snap-mandatory industry-scrollbar pb-8 pt-4"
                 >
                     {/* Custom Styled WebKit Scrollbar */}
                     <style dangerouslySetInnerHTML={{
@@ -36,13 +36,6 @@ export default function IndustryGrid() {
                         .industry-scrollbar::-webkit-scrollbar-track {
                             background: #e5e7eb;
                             border-radius: 4px;
-                            /* Create a virtual margin for the track to match the 1480px layout bounds */
-                            margin: 0 calc(max(1.5rem, (100vw - 1480px)/2 + 1.5rem));
-                        }
-                        @media (min-width: 1920px) {
-                            .industry-scrollbar::-webkit-scrollbar-track {
-                                margin: 0 calc((1920px - 1480px)/2 + 1.5rem);
-                            }
                         }
                         .industry-scrollbar::-webkit-scrollbar-thumb {
                             background: #9ca3af;
