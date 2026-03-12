@@ -68,6 +68,21 @@ const NAV_DATA: Record<string, { name: string; image: string; isNew?: boolean; h
     ]
 };
 
+const ALL_TOOLS_CATEGORIES = [
+    {
+        title: "Hand Tools",
+        items: ["Chrome Sockets", "Wrenches", "Ratchets & Drive Tools", "Screwdrivers & Hex Keys", "Pliers", "Pry Bars", "Striking & Struck", "Cutting Tools"]
+    },
+    {
+        title: "Tool Sets & Storage",
+        items: ["Mechanics Tool Sets", "Master Tool Sets", "Modular Tool Sets", "Tool Sets", "Tool Storage & Organization", "MEGAMOD"]
+    },
+    {
+        title: "Automotive & Specialty",
+        items: ["Impact Products", "Extraction Tools", "Diagnostic & Testing", "Torque Products", "Shop Equipment & Specialty Tools"]
+    }
+];
+
 export default function Header() {
     const [activeCategory, setActiveCategory] = useState<string | null>(null);
     const [isSearchExpanded, setIsSearchExpanded] = useState(false);
@@ -176,8 +191,29 @@ export default function Header() {
                     <div className="max-w-[1480px] w-full flex items-center justify-between px-6">
                         {/* Centered Navigation Links with Omni-Search */}
                         <div className="flex-1 flex justify-center items-center relative w-full h-full">
+
                             {/* Navigation Links and Trigger */}
-                            <nav className={`flex items-center space-x-10 lg:space-x-14 w-full justify-center transition-all duration-300 ease-in-out ${isSearchExpanded ? 'opacity-0 pointer-events-none scale-95' : 'opacity-100 scale-100'}`}>
+                            <nav className={`hidden lg:flex items-center space-x-10 lg:space-x-14 w-full justify-center transition-all duration-300 ease-in-out ${isSearchExpanded ? 'opacity-0 pointer-events-none scale-95' : 'opacity-100 scale-100'}`}>
+                                {/* ALL TOOLS Menu */}
+                                <div
+                                    className="h-full flex items-center py-2 relative"
+                                    onMouseEnter={() => handleMouseEnter('ALL TOOLS')}
+                                >
+                                    <Link
+                                        href="/products"
+                                        onClick={(e) => {
+                                            if (window.innerWidth < 1024) {
+                                                e.preventDefault();
+                                                setActiveCategory(activeCategory === 'ALL TOOLS' ? null : 'ALL TOOLS');
+                                            }
+                                        }}
+                                        className={`text-black text-[15.7px] font-bold uppercase tracking-widest transition-colors ${activeCategory === 'ALL TOOLS' ? 'text-brand-orange' : 'hover:text-brand-orange'}`}
+                                    >
+                                        ALL TOOLS
+                                    </Link>
+                                </div>
+
+                                {/* Existing Featured Categories */}
                                 {Object.keys(NAV_DATA).map((category) => (
                                     <div
                                         key={category}
@@ -280,33 +316,73 @@ export default function Header() {
                     <div className="overflow-hidden">
                         {/* Inner Container: Scrollable horizontally, centered when width allows */}
                         <div className="w-full mx-auto overflow-x-auto [scrollbar-width:thin] [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-track]:bg-transparent">
-                            <div className="max-w-[1480px] min-w-max mx-auto px-6 py-8 flex justify-center gap-x-6 gap-y-8 snap-x snap-mandatory pb-8">
-                                {activeCategory && !isSearchExpanded && NAV_DATA[activeCategory].map((product, index) => (
-                                    <Link href={product.href} key={index} className="flex flex-col items-center group w-[120px] flex-shrink-0 snap-center">
-                                        {/* Image Container */}
-                                        <div className="w-[100px] h-[100px] relative mb-4 transition-transform duration-300 group-hover:-translate-y-2">
+                            {activeCategory === 'ALL TOOLS' ? (
+                                <div className="max-w-[1480px] mx-auto px-6 py-12 flex divide-x divide-gray-200">
+                                    {ALL_TOOLS_CATEGORIES.map((section) => (
+                                        <div key={section.title} className="flex-1 min-w-[220px] px-8 lg:px-12 first:pl-0">
+                                            <h3 className="text-[15px] font-black uppercase text-brand-orange tracking-widest mb-6">{section.title}</h3>
+                                            <ul className="space-y-4">
+                                                {section.items.map((item) => (
+                                                    <li key={item}>
+                                                        <a href="#" className="text-[14.5px] font-bold text-brand-black hover:text-brand-orange transition-colors">{item}</a>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    ))}
+                                    {/* Promotional Callout block */}
+                                    <div className="hidden xl:flex flex-col flex-1 max-w-[360px] pl-8 lg:pl-12">
+                                        <div className="relative p-8 border border-gray-100 flex flex-col items-start justify-center text-left h-full overflow-hidden group/promo">
                                             <Image
-                                                src={product.image}
-                                                alt={product.name}
+                                                src="/images/Hero-3.JPG"
+                                                alt="Master Mechanics Sets"
                                                 fill
-                                                className="object-contain"
+                                                className="object-cover transition-transform duration-1000 group-hover/promo:scale-105 object-center"
                                             />
-                                        </div>
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20" />
 
-                                        {/* Product Title */}
-                                        <div className="text-black text-[12.5px] font-semibold text-center leading-snug group-hover:text-brand-orange transition-colors">
-                                            {product.name}
-                                        </div>
-
-                                        {/* New Badge */}
-                                        {product.isNew && (
-                                            <div className="text-[#BF4D00] text-[11px] font-bold mt-1 tracking-wider uppercase">
-                                                New
+                                            <div className="relative z-10 w-full flex flex-col h-full justify-end">
+                                                <span className="text-xl font-black uppercase text-white mb-3 leading-tight">Master Mechanics Sets</span>
+                                                <p className="text-[13.5px] font-semibold text-gray-200 mb-8 leading-snug">Equip your entire shop with comprehensive PRO tool sets starting under $500.</p>
+                                                <a href="#" className="relative inline-flex items-center justify-center bg-brand-orange px-8 py-4 overflow-hidden group w-full text-center">
+                                                    <span className="absolute inset-y-0 -left-[200%] block w-[200%] bg-white transition-all duration-500 ease-out skew-x-[30deg] origin-bottom group-hover:left-4"></span>
+                                                    <span className="relative z-10 w-full text-center font-bold text-white transition-colors duration-300 ease-in-out group-hover:text-brand-black uppercase tracking-widest text-[13px]">
+                                                        Shop Sets
+                                                    </span>
+                                                </a>
                                             </div>
-                                        )}
-                                    </Link>
-                                ))}
-                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="max-w-[1480px] min-w-max mx-auto px-6 py-8 flex justify-center gap-x-6 gap-y-8 snap-x snap-mandatory pb-8">
+                                    {activeCategory && !isSearchExpanded && NAV_DATA[activeCategory]?.map((product, index) => (
+                                        <Link href={product.href} key={index} className="flex flex-col items-center group w-[120px] flex-shrink-0 snap-center">
+                                            {/* Image Container */}
+                                            <div className="w-[100px] h-[100px] relative mb-4 transition-transform duration-300 group-hover:-translate-y-2">
+                                                <Image
+                                                    src={product.image}
+                                                    alt={product.name}
+                                                    fill
+                                                    className="object-contain"
+                                                />
+                                            </div>
+
+                                            {/* Product Title */}
+                                            <div className="text-black text-[12.5px] font-semibold text-center leading-snug group-hover:text-brand-orange transition-colors">
+                                                {product.name}
+                                            </div>
+
+                                            {/* New Badge */}
+                                            {product.isNew && (
+                                                <div className="text-[#BF4D00] text-[11px] font-bold mt-1 tracking-wider uppercase">
+                                                    New
+                                                </div>
+                                            )}
+                                        </Link>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -395,6 +471,6 @@ export default function Header() {
 
             {/* Where to Buy Modal */}
             <WhereToBuyModal isOpen={isWhereToBuyOpen} onClose={() => setIsWhereToBuyOpen(false)} />
-        </header >
+        </header>
     );
 }

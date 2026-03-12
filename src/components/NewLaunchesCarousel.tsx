@@ -103,7 +103,7 @@ export default function NewLaunchesCarousel() {
                             {carouselItems.map((item, index) => (
                                 // Each item is explicitly 1/3 of the container width on desktop, full width on mobile
                                 <div key={index} className="flex-shrink-0 w-full md:w-1/3 px-6">
-                                    <div className="flex flex-col group bg-white relative pt-6 hover:shadow-[0_10px_30px_rgba(0,0,0,0.12)] hover:-translate-y-2 hover:z-20 transition-all duration-300 rounded-xl h-full">
+                                    <div className="flex flex-col group bg-white relative pt-6 transition-all duration-300 rounded-xl h-full border border-transparent hover:border-gray-100">
 
                                         {/* Product Image */}
                                         <div className="w-full h-[320px] relative bg-white flex items-center justify-center overflow-hidden mb-8 rounded-t-xl p-6 mix-blend-multiply">

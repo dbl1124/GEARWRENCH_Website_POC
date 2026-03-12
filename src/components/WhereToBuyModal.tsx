@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import Image from 'next/image';
 
 interface WhereToBuyModalProps {
@@ -12,6 +13,9 @@ export default function WhereToBuyModal({ isOpen, onClose }: WhereToBuyModalProp
     const [activeTab, setActiveTab] = useState<'online' | 'nearby'>('online');
     const [searchZip, setSearchZip] = useState('');
     const [debouncedZip, setDebouncedZip] = useState('');
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => setMounted(true), []);
 
     useEffect(() => {
         const handler = setTimeout(() => {
@@ -47,7 +51,9 @@ export default function WhereToBuyModal({ isOpen, onClose }: WhereToBuyModalProp
         { name: 'NAPA Auto Parts', distance: '5.0 mi', address: '789 Industrial Pkwy, Townsburg', status: 'In Stock' },
     ];
 
-    return (
+    if (!mounted) return null;
+
+    return createPortal(
         <div className={`fixed inset-0 z-[999] flex items-center justify-center transition-all duration-500 ${isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0 delay-200'}`}>
             {/* Backdrop */}
             <div
@@ -56,7 +62,7 @@ export default function WhereToBuyModal({ isOpen, onClose }: WhereToBuyModalProp
             />
 
             {/* Modal Container */}
-            <div className={`relative w-full max-w-6xl h-[85vh] max-h-[800px] bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col z-10 m-4 transition-all duration-500 ease-out origin-top-right ${isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-0 -translate-y-24'}`}>
+            <div className={`relative w-full max-w-6xl h-[85vh] max-h-[800px] bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col z-10 m-4 transition-all duration-300 ease-out origin-center ${isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-8'}`}>
 
                 {/* Header */}
                 <div className="flex items-center justify-between px-8 py-6 border-b border-gray-100 bg-white">
@@ -198,6 +204,7 @@ export default function WhereToBuyModal({ isOpen, onClose }: WhereToBuyModalProp
                     )}
                 </div>
             </div>
-        </div>
+        </div>,
+        document.body
     );
 }
