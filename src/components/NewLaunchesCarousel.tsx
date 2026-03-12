@@ -5,8 +5,8 @@ import Link from 'next/link';
 
 const carouselItems = [
     {
-        title: "MEGAMOD 1858 Tool Storage Set",
-        image: "/images/megamod.png",
+        title: "MEGAMOD 873 Tool Storage Set",
+        image: "/images/nav/MEGAMOD/873.png",
         link: "/products/megamod"
     },
     {

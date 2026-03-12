@@ -36,7 +36,7 @@ export default function AboutBlock() {
                     <div className="flex-1 relative h-full">
                         <Image
                             src="/images/about-1.png"
-                            alt="GearWrench Mechanic"
+                            alt="GEARWRENCH Mechanic"
                             fill
                             className="object-cover"
                         />
@@ -44,7 +44,7 @@ export default function AboutBlock() {
                     <div className="flex-1 relative h-full">
                         <Image
                             src="/images/about-2.png"
-                            alt="GearWrench Diagnostic Tool"
+                            alt="GEARWRENCH Diagnostic Tool"
                             fill
                             className="object-cover"
                         />

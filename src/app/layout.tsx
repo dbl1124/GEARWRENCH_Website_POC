@@ -19,8 +19,8 @@ const akrobat = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "GearWrench POC",
-  description: "Next.js modern POC for GearWrench",
+  title: "GEARWRENCH POC",
+  description: "Next.js modern POC for GEARWRENCH",
 };
 
 export default function RootLayout({

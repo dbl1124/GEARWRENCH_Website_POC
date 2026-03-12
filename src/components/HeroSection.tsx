@@ -6,7 +6,7 @@ import Link from 'next/link';
 const carouselSlides = [
     {
         image: '/images/Hero-1.png',
-        alt: 'GearWrench Smart Diagnostics',
+        alt: 'GEARWRENCH Smart Diagnostics',
         tagline: 'Discover',
         headline: 'SMART DIAGNOSTICS',
         subline: 'Built for techs who want more functions without subscription fees',
@@ -15,7 +15,7 @@ const carouselSlides = [
     },
     {
         image: '/images/Hero-2.jpg',
-        alt: 'GearWrench Hero 2',
+        alt: 'GEARWRENCH Hero 2',
         tagline: 'Discover',
         headline: 'SMART DIAGNOSTICS',
         subline: 'Built for techs who want more functions without subscription fees',
@@ -24,7 +24,7 @@ const carouselSlides = [
     },
     {
         image: '/images/Hero-3.JPG',
-        alt: 'GearWrench Hero 3',
+        alt: 'GEARWRENCH Hero 3',
         tagline: 'Discover',
         headline: 'SMART DIAGNOSTICS',
         subline: 'Built for techs who want more functions without subscription fees',
