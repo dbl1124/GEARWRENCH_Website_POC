@@ -17,8 +17,8 @@ const carouselSlides = [
         image: '/images/Hero-2.jpg',
         alt: 'GEARWRENCH Hero 2',
         tagline: 'Discover',
-        headline: 'SMART DIAGNOSTICS',
-        subline: 'Built for techs who want more functions without subscription fees',
+        headline: 'IMPOSSIBLE TO MISS',
+        subline: 'Engineered for instant recognition and lasting clarity',
         ctaText: 'LEARN MORE',
         ctaLink: '/products/smart-diagnostics'
     },
@@ -26,8 +26,8 @@ const carouselSlides = [
         image: '/images/Hero-3.JPG',
         alt: 'GEARWRENCH Hero 3',
         tagline: 'Discover',
-        headline: 'SMART DIAGNOSTICS',
-        subline: 'Built for techs who want more functions without subscription fees',
+        headline: 'MASTER SETS FOR LESS',
+        subline: 'MEGAMOD Master Technician Hand Tool Sets',
         ctaText: 'LEARN MORE',
         ctaLink: '/products/smart-diagnostics'
     }

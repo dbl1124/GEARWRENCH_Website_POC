@@ -381,6 +381,22 @@ export default function Header() {
                                             )}
                                         </Link>
                                     ))}
+                                    {/* See All Category Link */}
+                                    {activeCategory && !isSearchExpanded && NAV_DATA[activeCategory] && (
+                                        <Link 
+                                            href={`/products/${activeCategory.toLowerCase().replace(/ /g, '-')}`} 
+                                            className="flex flex-col items-center justify-center group w-[120px] flex-shrink-0 snap-center"
+                                        >
+                                            <div className="w-[40px] h-[40px] rounded-full bg-gray-50 flex items-center justify-center mb-4 transition-all duration-300 group-hover:bg-brand-orange group-hover:shadow-md group-hover:-translate-y-2">
+                                                <svg className="w-4 h-4 text-brand-orange group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                                </svg>
+                                            </div>
+                                            <div className="text-brand-orange text-[12.5px] font-bold uppercase tracking-widest text-center leading-snug group-hover:text-brand-black transition-colors mt-2">
+                                                See All
+                                            </div>
+                                        </Link>
+                                    )}
                                 </div>
                             )}
                         </div>
